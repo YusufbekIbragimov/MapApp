@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Map App</string>
+    <string name="something_wrong">Something went wrong</string>
+    <string name="my_addresses">Мои адреса</string>
+    <string name="map">Мап</string>
+    <string name="profile">Профил</string>
+    <string name="search">Поиск</string>
+    <string name="add_address_saved">Добавить адрес в избранное</string>
+    <string name="cancel">Отмена</string>
+    <string name="continue_">Подтвердить</string>
+    <string name="rate">%d оценок</string>
+    <string name="add_saved">Добавить в избранное</string>
+    <string name="saved">Добавил в избранное</string>
+    <string name="info">Информация</string>
+</resources>
