@@ -1,5 +1,8 @@
 package com.yusuf.weaterapp.presentation.dashboard.saved
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,6 +37,13 @@ import com.yusuf.weaterapp.utils.TopBar
 fun SavedScreen(viewModel: SavedViewModel = hiltViewModel()) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) {}
+
+    LaunchedEffect(Unit) {
+        launcher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+    }
 
     Scaffold(
         topBar = { TopBar(R.string.my_addresses) }

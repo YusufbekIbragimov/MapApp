@@ -1,9 +1,7 @@
 package com.yusuf.weaterapp.presentation.navigation
 
 import android.app.Activity
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
