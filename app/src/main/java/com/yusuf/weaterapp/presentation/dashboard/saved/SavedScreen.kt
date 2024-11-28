@@ -5,10 +5,13 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -32,7 +35,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -64,7 +67,9 @@ fun SavedScreen(viewModel: SavedViewModel = hiltViewModel()) {
     ) { paddings ->
 
         LazyColumn(
-            modifier = Modifier.padding(top = 16.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 16.dp),
             contentPadding = paddings
         ) {
             items(uiState.savedLocations) { geoModel ->
@@ -95,20 +100,30 @@ private fun DeleteItemDialog(
         text = { Text(text = stringResource(R.string.are_you_sure_delete)) },
         confirmButton = {
             TextButton(
-                modifier = Modifier.clip(CircleShape).background(Color.Red),
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(Color.Red),
                 onClick = {
                     onDelete()
                     onDismiss()
                 }
             ) {
-                Text(stringResource(R.string.delete), color = Color.White, style = MaterialTheme.typography.titleMedium)
+                Text(
+                    stringResource(R.string.delete),
+                    color = Color.White,
+                    style = MaterialTheme.typography.titleMedium
+                )
             }
         },
         dismissButton = {
             OutlinedButton(
                 onClick = { onDismiss() }
             ) {
-                Text(stringResource(R.string.cancel), color = Color.Black, style = MaterialTheme.typography.titleMedium)
+                Text(
+                    stringResource(R.string.cancel),
+                    color = Color.Black,
+                    style = MaterialTheme.typography.titleMedium
+                )
             }
         }
     )
@@ -116,18 +131,23 @@ private fun DeleteItemDialog(
 
 @Composable
 private fun SavedItem(geoModel: GeoModel, onDeleteItem: (GeoModel) -> Unit) {
-    var isExpanded by rememberSaveable { mutableStateOf(false) }
+    var isExpanded by remember { mutableStateOf(false) }
 
     Surface(
         modifier = Modifier
+            .animateContentSize(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                    stiffness = Spring.StiffnessLow
+                )
+            )
             .fillMaxWidth()
-            .animateContentSize()
             .padding(vertical = 8.dp, horizontal = 16.dp),
         shape = RoundedCornerShape(16.dp),
         onClick = { isExpanded = !isExpanded },
-        shadowElevation = 4.dp
+        shadowElevation = 2.dp
     ) {
-        Column(modifier = Modifier.animateContentSize()) {
+        Column {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

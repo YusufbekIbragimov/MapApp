@@ -7,7 +7,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.core.view.WindowCompat
 import com.yandex.mapkit.MapKitFactory
 import com.yusuf.weaterapp.presentation.navigation.AppFlow
-import com.yusuf.weaterapp.presentation.theme.WeaterAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

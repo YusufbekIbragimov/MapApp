@@ -88,7 +88,7 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
 
-    implementation("com.yandex.android:maps.mobile:4.8.1-full")
+    implementation("com.yandex.android:maps.mobile:4.7.0-full")
 
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     implementation("com.google.dagger:hilt-android:2.48")
