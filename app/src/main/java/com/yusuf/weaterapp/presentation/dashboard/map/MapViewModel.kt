@@ -153,11 +153,11 @@ class MapViewModel @Inject constructor(
                 )
             )
 
+            _openSearchSheet.send(false)
             _openSaveAlert.emit(false)
             _query.emit("")
             _result.emit(emptyList())
             _selectedGeoSaveName.emit("")
-            _openSearchSheet.send(false)
             _selectedGeoObject.emit(null)
             _showToast.send(resourceProvider.getString(R.string.saved))
         }

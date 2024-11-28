@@ -36,6 +36,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -72,7 +73,7 @@ fun SavedScreen(viewModel: SavedViewModel = hiltViewModel()) {
                 .padding(top = 16.dp),
             contentPadding = paddings
         ) {
-            items(uiState.savedLocations) { geoModel ->
+            items(uiState.savedLocations, key = { it.id }) { geoModel ->
                 SavedItem(geoModel, viewModel::openDeleteDialog)
             }
         }
@@ -131,7 +132,7 @@ private fun DeleteItemDialog(
 
 @Composable
 private fun SavedItem(geoModel: GeoModel, onDeleteItem: (GeoModel) -> Unit) {
-    var isExpanded by remember { mutableStateOf(false) }
+    var isExpanded by rememberSaveable { mutableStateOf(false) }
 
     Surface(
         modifier = Modifier
