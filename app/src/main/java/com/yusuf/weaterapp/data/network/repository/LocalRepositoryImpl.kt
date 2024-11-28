@@ -13,6 +13,10 @@ class LocalRepositoryImpl @Inject constructor(
         dao.saveGeo(geo)
     }
 
+    override suspend fun deleteGeo(geo: GeoEntity) {
+        dao.deleteGeo(geo.id)
+    }
+
     override suspend fun getAllGeos(): Flow<List<GeoEntity>> {
         return dao.getAllGeos()
     }

@@ -12,4 +12,7 @@
     <string name="add_saved">Добавить в избранное</string>
     <string name="saved">Добавил в избранное</string>
     <string name="info">Информация</string>
+    <string name="delete">Удалить</string>
+    <string name="are_you_sure_delete">Вы уверены что хотите удалить?</string>
+    <string name="confirm_delete">Подтвердить удаление</string>
 </resources>

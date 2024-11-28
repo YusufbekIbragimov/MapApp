@@ -5,5 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalRepository {
     suspend fun saveGeo(geo: GeoEntity)
+    suspend fun deleteGeo(geo: GeoEntity)
     suspend fun getAllGeos(): Flow<List<GeoEntity>>
 }

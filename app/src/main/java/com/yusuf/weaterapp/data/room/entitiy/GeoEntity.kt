@@ -15,5 +15,5 @@ data class GeoEntity(
 )
 
 fun GeoEntity.toDomain(): GeoModel {
-    return GeoModel(name, address, lat, lon)
+    return GeoModel(id, name, address, lat, lon)
 }
